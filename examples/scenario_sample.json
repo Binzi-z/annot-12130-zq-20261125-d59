@@ -1,0 +1,84 @@
+{
+  "node_limit": 200000,
+  "tables": [
+    {
+      "table_id": "T1",
+      "lower": 0,
+      "upper": 9,
+      "cells": ["a", "b", "c", "d"],
+      "protected": ["d"],
+      "rows": 2,
+      "cols": 2
+    }
+  ],
+  "records": [
+    {
+      "record_id": "PUB-C1",
+      "team": "外部复核方",
+      "order": 1,
+      "state": "published",
+      "note": "第一天开放：第一行份额",
+      "constraint": {
+        "table_id": "T1",
+        "name": "C1:行和R1=7",
+        "rhs": 7,
+        "terms": {"a": 1, "b": 1}
+      }
+    },
+    {
+      "record_id": "PUB-C2",
+      "team": "外部复核方",
+      "order": 2,
+      "state": "published",
+      "note": "第二天开放：第一列份额",
+      "constraint": {
+        "table_id": "T1",
+        "name": "C2:列和K1=5",
+        "rhs": 5,
+        "terms": {"a": 1, "c": 1}
+      }
+    },
+    {
+      "record_id": "PUB-C3",
+      "team": "外部复核方",
+      "order": 3,
+      "state": "published",
+      "note": "第三天开放：第二行份额",
+      "constraint": {
+        "table_id": "T1",
+        "name": "C3:行和R2=4",
+        "rhs": 4,
+        "terms": {"c": 1, "d": 1}
+      }
+    },
+    {
+      "record_id": "PUB-C4",
+      "team": "外部复核方",
+      "order": 4,
+      "state": "published",
+      "note": "第四天开放：第二列份额",
+      "constraint": {
+        "table_id": "T1",
+        "name": "C4:列和K2=6",
+        "rhs": 6,
+        "terms": {"b": 1, "d": 1}
+      }
+    }
+  ],
+  "requests": [
+    {
+      "request_id": "REQ-5",
+      "team": "业务方B",
+      "order": 5,
+      "note": "第五天申请开放对角份额；与前四份叠加后 d 被唯一确定为 2",
+      "constraints": [
+        {
+          "table_id": "T1",
+          "name": "C5:对角和=5",
+          "rhs": 5,
+          "terms": {"a": 1, "d": 1}
+        }
+      ]
+    }
+  ]
+}
